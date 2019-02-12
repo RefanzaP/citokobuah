@@ -15,14 +15,11 @@ class Supplier_model extends CI_Model
             'label' => 'Name',
             'rules' => 'required'],
 
-            ['field' => 'price',
-            'label' => 'Price',
-            'rules' => 'numeric'],
-            
-            ['field' => 'description',
-            'label' => 'Description',
+            ['field' => 'address',
+            'label' => 'Address',
             'rules' => 'required']
-        ];
+            
+         ];
     }
 
     public function getAll()
@@ -37,8 +34,7 @@ class Supplier_model extends CI_Model
 
     public function save()
     {
-        $post = $this->input->post();
-        $this->Supplier_id = uniqid();
+        $post = $this->input->post();     
         $this->Supplier_name = $post["name"];
         $this->Supplier_address = $post["address"];
         $this->db->insert($this->_table, $this);
@@ -46,8 +42,7 @@ class Supplier_model extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->Supplier_id = uniqid();
+        $post = $this->input->post();        
         $this->Supplier_name = $post["name"];
         $this->Supplier_address = $post["address"];
         $this->db->insert($this->_table, $this);

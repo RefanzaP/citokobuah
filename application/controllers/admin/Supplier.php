@@ -21,10 +21,10 @@ class Supplier extends CI_Controller
     {
         $supplier = $this->supplier_model;
         $validation = $this->form_validation;
-        $validation->set_rules($product->rules());
+        $validation->set_rules($supplier->rules());
 
         if ($validation->run()) {
-            $product->save();
+            $supplier->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
@@ -35,19 +35,19 @@ class Supplier extends CI_Controller
     {
         if (!isset($id)) redirect('admin/supplier');
        
-        $product = $this->product_model;
+        $supplier = $this->supplier_model;
         $validation = $this->form_validation;
-        $validation->set_rules($product->rules());
+        $validation->set_rules($supplier->rules());
 
         if ($validation->run()) {
-            $product->update();
+            $supplier->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
         $data["supplier"] = $supplier->getById($id);
         if (!$data["supplier"]) show_404();
         
-        $this->load->view("admin/product/edit_form", $data);
+        $this->load->view("admin/supplier/edit_form", $data);
     }
 
     public function delete($id=null)
